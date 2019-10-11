@@ -1,11 +1,11 @@
 /*
-   File: prog3_bb0000.cpp  // Remove this inline comment after replacing 'bb0000' with your account number.
+   File: prog3_mkh115_zmh11.cpp
 
-   Author: Betty Boop      // Remove this inline comment after replacing Betty Boop with your first & last names.
-   C.S.1428.?              // Remove this inline comment after replacing the '?' with your three-digit lecture section number.
-   Lab Section: L?         // Remove this inline comment after replacing the '?' with your two-digit lab section number.
+   Author: Mavrick Henderson, Zachary Hickey
+   C.S.1428.002
+   Lab Section: L17, L17
    Program: #3
-   Due Date: --/--/--      // Remove this inline comment after replacing the dashes with the due date, in this format - month, day, year.
+   Due Date: 10/16/19
 
    This program reads a simple expression of the form 'value operator value'
    from the keyboard only using one read statement to "get" the parts of the
@@ -102,5 +102,62 @@ using namespace std;
 
 int main()
 {
-cout <<"test"; 
+    double operand_one,
+           operand_two;
+
+    char operatr;
+
+    ofstream fout;
+    fout.open("prog3_002out1.txt");
+
+    if ( !fout )
+    {
+        cout << endl << endl
+             << " ***Program Terminated.*** " << endl << endl
+             << "Output file failed to open." << endl;
+
+         system("PAUSE>NUL");
+
+        return 2;
+    }
+
+    cout << "Enter a binary expression of the form: operand operator operand ";
+    cin >> operand_one >> operatr >> operand_two;
+
+    fout << "Mavrick Henderson, Zachary Hickey" << endl
+         <<"C.S.1428.002" << endl
+         <<"Lab Section: L17, L17" << endl
+         <<"10/16/19" << endl << endl;
+
+    fout << operand_one << " " << operatr << " " << operand_two
+         << fixed << setprecision(1);
+
+    switch( operatr )
+    {
+        case '+': fout << " = " <<operand_one + operand_two;
+                  break;
+        case '-': fout << " = " <<operand_one - operand_two;
+                  break;
+        case '*': fout << " = " <<operand_one * operand_two;
+                  break;
+        case '/': if( operand_two == 0 )
+                    fout << "  Division by zero produces an undefined result.";
+                  else
+                    fout << " = " <<operand_one / operand_two;
+                  break;
+        default: fout << "  Encountered an unknown operator.";
+    }
+
+    cout << endl << endl << "Mavrick Henderson, Zachary Hickey" << endl
+         <<"C.S.1428.002" << endl
+         <<"Lab Section: L17, L17" << endl
+         <<"10/16/19" << endl << endl;
+
+    cout << "Program results have been written to prog3_002out1.txt." << endl;
+
+    fout.close();
+
+    system("PAUSE>NUL");
+
+    return 0;
 }
